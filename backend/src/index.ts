@@ -10,7 +10,7 @@ app.use(cors())
 app.use(express.json())
 
 app.get("/", (req, res) => {
-  res.send("API OK")
+  res.send("API Kon")
 })
 
 app.use("/events", eventRoutes)
