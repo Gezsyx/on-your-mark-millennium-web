@@ -20,11 +20,11 @@ export const getPembicara = async (
       data: allPembicara,
     });
   } catch (error) {
-    res.status(500).json({
-      message: "Gagal mengambil data pembicara",
-      error,
-    });
-  }
+  res.status(500).json({
+    message: "Gagal mengambil data pembicara",
+    error: error instanceof Error ? error.message : error,
+  });
+}
 };
 
 export const savePembicara = async (
