@@ -6,9 +6,8 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npx prisma generate && next build",
     "dev": "tsx watch src/index.ts",
-      "postinstall": "prisma generate"
+    "postinstall": "prisma generate"
   },
   "keywords": [],
   "author": "",
@@ -16,10 +15,7 @@
   "dependencies": {
     "@prisma/client": "^6.19.3",
     "cors": "^2.8.6",
-    "express": "^5.2.1",
-    "next": "^16.2.6",
-    "react": "^19.2.6",
-    "react-dom": "^19.2.6"
+    "express": "^5.2.1"
   },
   "devDependencies": {
     "@types/cors": "^2.8.19",
