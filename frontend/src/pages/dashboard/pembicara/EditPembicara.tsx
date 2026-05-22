@@ -38,7 +38,9 @@ export default function EditPembicara() {
       try {
         setFetchLoading(true);
 
-        const res = await fetch(`http://localhost:3000/pembicara/${id}`);
+        const res = await fetch(
+          `https://on-your-mark-millennium-lc0qoyzcb.vercel.app/pembicara/${id}`,
+        );
 
         if (!res.ok) {
           throw new Error("Gagal mengambil data pembicara");
@@ -126,15 +128,18 @@ export default function EditPembicara() {
     try {
       setLoading(true);
 
-      const res = await fetch(`http://localhost:3000/pembicara/${id}`, {
-        method: "PUT",
+      const res = await fetch(
+        `https://on-your-mark-millennium-lc0qoyzcb.vercel.app/pembicara/${id}`,
+        {
+          method: "PUT",
 
-        headers: {
-          "Content-Type": "application/json",
+          headers: {
+            "Content-Type": "application/json",
+          },
+
+          body: JSON.stringify(formData),
         },
-
-        body: JSON.stringify(formData),
-      });
+      );
 
       const result = await res.json();
 

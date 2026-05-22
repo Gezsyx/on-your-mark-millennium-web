@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { 
-  Plus, Edit, Trash, 
-  ChevronLeft, ChevronRight, Loader2 
+import {
+  Plus,
+  Edit,
+  Trash,
+  ChevronLeft,
+  ChevronRight,
+  Loader2,
 } from "lucide-react";
 
 interface CategoryItem {
@@ -13,11 +17,12 @@ interface CategoryItem {
 export default function CategoryIndex() {
   const [categories, setCategories] = useState<CategoryItem[]>([]);
   const [loading, setLoading] = useState(true);
-  
+
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 8;
 
-  const API_URL = "http://localhost:3000/categories";
+  const API_URL =
+    "https://on-your-mark-millennium-lc0qoyzcb.vercel.app/categories";
 
   const fetchCategories = async () => {
     try {
@@ -25,9 +30,10 @@ export default function CategoryIndex() {
       const res = await fetch(API_URL);
       if (!res.ok) throw new Error("Gagal mengambil data");
       const responseData = await res.json();
-      
+
       // Mengamankan penarikan data berdasarkan variasi struktur JSON dari backend
-      const result = responseData.categories || responseData.data || responseData;
+      const result =
+        responseData.categories || responseData.data || responseData;
       if (Array.isArray(result)) {
         setCategories(result);
       } else {
@@ -41,7 +47,9 @@ export default function CategoryIndex() {
   };
 
   const handleDelete = async (id: number, name: string) => {
-    const confirmDelete = window.confirm(`Apakah kamu yakin ingin menghapus kategori "${name}"?`);
+    const confirmDelete = window.confirm(
+      `Apakah kamu yakin ingin menghapus kategori "${name}"?`,
+    );
     if (!confirmDelete) return;
 
     try {
@@ -50,7 +58,9 @@ export default function CategoryIndex() {
         alert("Kategori berhasil dihapus!");
         setCategories((prev) => prev.filter((item) => item.id !== id));
       } else {
-        alert("Gagal menghapus kategori. Kategori ini mungkin sedang digunakan oleh suatu Event.");
+        alert(
+          "Gagal menghapus kategori. Kategori ini mungkin sedang digunakan oleh suatu Event.",
+        );
       }
     } catch (error) {
       alert("Terjadi kesalahan koneksi.");
@@ -101,23 +111,44 @@ export default function CategoryIndex() {
             <table className="w-full text-left">
               <thead className="bg-gray-50 border-b border-gray-100">
                 <tr>
-                  <th className="px-6 py-4 text-sm font-semibold text-gray-600 uppercase w-24 text-center">ID</th>
-                  <th className="px-6 py-4 text-sm font-semibold text-gray-600 uppercase">Category Name</th>
-                  <th className="px-6 py-4 text-sm font-semibold text-center uppercase w-32">Actions</th>
+                  <th className="px-6 py-4 text-sm font-semibold text-gray-600 uppercase w-24 text-center">
+                    ID
+                  </th>
+                  <th className="px-6 py-4 text-sm font-semibold text-gray-600 uppercase">
+                    Category Name
+                  </th>
+                  <th className="px-6 py-4 text-sm font-semibold text-center uppercase w-32">
+                    Actions
+                  </th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-50">
                 {currentCategories.length > 0 ? (
                   currentCategories.map((category) => (
-                    <tr key={category.id} className="hover:bg-gray-50/50 transition-colors">
-                      <td className="px-6 py-4 font-semibold text-gray-500 text-center">#{category.id}</td>
-                      <td className="px-6 py-4 font-semibold text-gray-800">{category.name}</td>
+                    <tr
+                      key={category.id}
+                      className="hover:bg-gray-50/50 transition-colors"
+                    >
+                      <td className="px-6 py-4 font-semibold text-gray-500 text-center">
+                        #{category.id}
+                      </td>
+                      <td className="px-6 py-4 font-semibold text-gray-800">
+                        {category.name}
+                      </td>
                       <td className="px-6 py-4">
                         <div className="flex justify-center gap-2">
-                          <Link to={`/category/edit/${category.id}`} className="p-2 text-gray-400 hover:text-green-600 hover:bg-green-50 rounded-lg">
+                          <Link
+                            to={`/category/edit/${category.id}`}
+                            className="p-2 text-gray-400 hover:text-green-600 hover:bg-green-50 rounded-lg"
+                          >
                             <Edit size={18} />
                           </Link>
-                          <button onClick={() => handleDelete(category.id, category.name)} className="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg">
+                          <button
+                            onClick={() =>
+                              handleDelete(category.id, category.name)
+                            }
+                            className="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg"
+                          >
                             <Trash size={18} />
                           </button>
                         </div>
@@ -126,7 +157,9 @@ export default function CategoryIndex() {
                   ))
                 ) : (
                   <tr>
-                    <td colSpan={3} className="text-center py-20 text-gray-400">Data tidak ditemukan.</td>
+                    <td colSpan={3} className="text-center py-20 text-gray-400">
+                      Data tidak ditemukan.
+                    </td>
                   </tr>
                 )}
               </tbody>
@@ -134,7 +167,16 @@ export default function CategoryIndex() {
 
             <div className="bg-white px-6 py-4 border-t border-gray-100 flex items-center justify-between">
               <div className="text-sm text-gray-500">
-                Menampilkan <span className="font-medium">{categories.length > 0 ? indexOfFirstItem + 1 : 0}</span> sampai <span className="font-medium">{Math.min(indexOfLastItem, categories.length)}</span> dari <span className="font-medium">{categories.length}</span> data
+                Menampilkan{" "}
+                <span className="font-medium">
+                  {categories.length > 0 ? indexOfFirstItem + 1 : 0}
+                </span>{" "}
+                sampai{" "}
+                <span className="font-medium">
+                  {Math.min(indexOfLastItem, categories.length)}
+                </span>{" "}
+                dari <span className="font-medium">{categories.length}</span>{" "}
+                data
               </div>
               <div className="flex items-center gap-2">
                 <button
@@ -144,16 +186,16 @@ export default function CategoryIndex() {
                 >
                   <ChevronLeft size={20} />
                 </button>
-                
+
                 <div className="flex gap-1">
                   {[...Array(totalPages)].map((_, index) => (
                     <button
                       key={index + 1}
                       onClick={() => setCurrentPage(index + 1)}
                       className={`px-3.5 py-1.5 rounded-lg text-sm font-medium transition-colors ${
-                        currentPage === index + 1 
-                        ? "bg-blue-600 text-white" 
-                        : "text-gray-600 hover:bg-gray-100"
+                        currentPage === index + 1
+                          ? "bg-blue-600 text-white"
+                          : "text-gray-600 hover:bg-gray-100"
                       }`}
                     >
                       {index + 1}

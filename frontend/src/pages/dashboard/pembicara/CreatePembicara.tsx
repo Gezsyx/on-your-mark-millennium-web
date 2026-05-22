@@ -27,13 +27,16 @@ export default function CreatePembicara() {
     try {
       setLoading(true);
 
-      const res = await fetch("http://localhost:3000/pembicara", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const res = await fetch(
+        "https://on-your-mark-millennium-lc0qoyzcb.vercel.app/pembicara",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
         },
-        body: JSON.stringify(data),
-      });
+      );
 
       const result = await res.json();
 
@@ -60,9 +63,7 @@ export default function CreatePembicara() {
         <div className="border-b border-gray-100 px-8 py-6">
           <h1 className="text-3xl font-bold text-gray-900">Create Pembicara</h1>
 
-          <p className="text-gray-500 mt-1">
-            Tambahkan data pembicara
-          </p>
+          <p className="text-gray-500 mt-1">Tambahkan data pembicara</p>
         </div>
 
         {/* CONTENT */}

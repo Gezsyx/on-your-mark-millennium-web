@@ -21,7 +21,8 @@ export default function EditCategory() {
 
   const [fetchLoading, setFetchLoading] = useState(true);
 
-  const API_URL = "http://localhost:3000/categories";
+  const API_URL =
+    "https://on-your-mark-millennium-lc0qoyzcb.vercel.app/categories";
 
   const {
     register,

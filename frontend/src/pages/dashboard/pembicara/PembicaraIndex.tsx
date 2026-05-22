@@ -23,7 +23,8 @@ export default function PembicaraIndex() {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
 
-  const API_URL = "http://localhost:3000/pembicara";
+  const API_URL =
+    "https://on-your-mark-millennium-lc0qoyzcb.vercel.app/pembicara";
 
   const fetchPembicara = async () => {
     try {
@@ -108,7 +109,7 @@ export default function PembicaraIndex() {
         <div>
           <h1 className="text-3xl font-bold text-gray-900">Pembicara</h1>
 
- <br />
+          <br />
           <p className="text-gray-500">Manajemen data pembicara.</p>
         </div>
 
