@@ -39,7 +39,7 @@ export default function EditPembicara() {
         setFetchLoading(true);
 
         const res = await fetch(
-          `https://on-your-mark-millennium-lc0qoyzcb.vercel.app/pembicara/${id}`,
+          `https://on-your-mark-millennium-web.vercel.app/pembicara/${id}`,
         );
 
         if (!res.ok) {
@@ -129,7 +129,7 @@ export default function EditPembicara() {
       setLoading(true);
 
       const res = await fetch(
-        `https://on-your-mark-millennium-lc0qoyzcb.vercel.app/pembicara/${id}`,
+        `https://on-your-mark-millennium-web.vercel.app/pembicara/${id}`,
         {
           method: "PUT",
 

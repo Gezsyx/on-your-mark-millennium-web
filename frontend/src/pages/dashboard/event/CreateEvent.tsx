@@ -59,13 +59,9 @@ export default function CreateEvent() {
     const fetchDropdownData = async () => {
       try {
         const [resCat, resSpeak] = await Promise.all([
-          fetch(
-            "https://on-your-mark-millennium-lc0qoyzcb.vercel.app/categories",
-          ),
+          fetch("https://on-your-mark-millennium-web.vercel.app/categories"),
 
-          fetch(
-            "https://on-your-mark-millennium-lc0qoyzcb.vercel.app/pembicara",
-          ),
+          fetch("https://on-your-mark-millennium-web.vercel.app/pembicara"),
         ]);
 
         const catData = await resCat.json();
@@ -91,7 +87,7 @@ export default function CreateEvent() {
 
     try {
       const res = await fetch(
-        "https://on-your-mark-millennium-lc0qoyzcb.vercel.app/events",
+        "https://on-your-mark-millennium-web.vercel.app/events",
         {
           method: "POST",
 

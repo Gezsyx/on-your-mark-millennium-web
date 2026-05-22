@@ -62,15 +62,9 @@ export default function EditEvent() {
         setLoading(true);
 
         const [resCat, resSpeaker, resEvent] = await Promise.all([
-          fetch(
-            "https://on-your-mark-millennium-lc0qoyzcb.vercel.app/categories",
-          ),
-          fetch(
-            "https://on-your-mark-millennium-lc0qoyzcb.vercel.app/pembicara",
-          ),
-          fetch(
-            `https://on-your-mark-millennium-lc0qoyzcb.vercel.app/events/${id}`,
-          ),
+          fetch("https://on-your-mark-millennium-web.vercel.app/categories"),
+          fetch("https://on-your-mark-millennium-web.vercel.app/pembicara"),
+          fetch(`https://on-your-mark-millennium-web.vercel.app/events/${id}`),
         ]);
 
         const catData = await resCat.json();
@@ -192,7 +186,7 @@ export default function EditEvent() {
       setIsSubmitting(true);
 
       const res = await fetch(
-        `https://on-your-mark-millennium-lc0qoyzcb.vercel.app/events/${id}`,
+        `https://on-your-mark-millennium-web.vercel.app/events/${id}`,
         {
           method: "PUT",
           headers: {

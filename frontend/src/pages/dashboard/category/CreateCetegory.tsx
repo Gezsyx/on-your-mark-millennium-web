@@ -34,7 +34,7 @@ export default function CategoryCreate() {
       setLoading(true);
 
       const res = await fetch(
-        "https://on-your-mark-millennium-lc0qoyzcb.vercel.app/categories",
+        "https://on-your-mark-millennium-web.vercel.app/categories",
         {
           method: "POST",
 

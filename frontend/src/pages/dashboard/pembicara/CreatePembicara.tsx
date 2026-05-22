@@ -28,7 +28,7 @@ export default function CreatePembicara() {
       setLoading(true);
 
       const res = await fetch(
-        "https://on-your-mark-millennium-lc0qoyzcb.vercel.app/pembicara",
+        "https://on-your-mark-millennium-web.vercel.app/pembicara",
         {
           method: "POST",
           headers: {

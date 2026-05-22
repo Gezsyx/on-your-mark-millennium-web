@@ -26,7 +26,7 @@ export default function EventIndex() {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 7;
 
-  const API_URL = "https://on-your-mark-millennium-lc0qoyzcb.vercel.app/events";
+  const API_URL = "https://on-your-mark-millennium-web.vercel.app/events";
 
   const fetchEvents = async () => {
     try {

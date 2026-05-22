@@ -23,8 +23,7 @@ export default function PembicaraIndex() {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
 
-  const API_URL =
-    "https://on-your-mark-millennium-lc0qoyzcb.vercel.app/pembicara";
+  const API_URL = "https://on-your-mark-millennium-web.vercel.app/pembicara";
 
   const fetchPembicara = async () => {
     try {
