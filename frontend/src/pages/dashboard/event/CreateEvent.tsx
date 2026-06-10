@@ -59,9 +59,9 @@ export default function CreateEvent() {
     const fetchDropdownData = async () => {
       try {
         const [resCat, resSpeak] = await Promise.all([
-          fetch("https://on-your-mark-millennium-web.vercel.app/categories"),
+          fetch("http://localhost:3000/categories"),
 
-          fetch("https://on-your-mark-millennium-web.vercel.app/pembicara"),
+          fetch("http://localhost:3000/pembicara"),
         ]);
 
         const catData = await resCat.json();
@@ -86,26 +86,23 @@ export default function CreateEvent() {
     setLoading(true);
 
     try {
-      const res = await fetch(
-        "https://on-your-mark-millennium-web.vercel.app/events",
-        {
-          method: "POST",
+      const res = await fetch("http://localhost:3000/events", {
+        method: "POST",
 
-          headers: {
-            "Content-Type": "application/json",
-          },
-
-          body: JSON.stringify({
-            ...data,
-
-            categoryId: Number(data.categoryId),
-
-            pembicaraId: Number(data.pembicaraId),
-
-            dateEvent: new Date(data.dateEvent).toISOString(),
-          }),
+        headers: {
+          "Content-Type": "application/json",
         },
-      );
+
+        body: JSON.stringify({
+          ...data,
+
+          categoryId: Number(data.categoryId),
+
+          pembicaraId: Number(data.pembicaraId),
+
+          dateEvent: new Date(data.dateEvent).toISOString(),
+        }),
+      });
 
       const result = await res.json();
 

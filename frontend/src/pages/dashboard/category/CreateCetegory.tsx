@@ -33,20 +33,17 @@ export default function CategoryCreate() {
     try {
       setLoading(true);
 
-      const res = await fetch(
-        "https://on-your-mark-millennium-web.vercel.app/categories",
-        {
-          method: "POST",
+      const res = await fetch("http://localhost:3000/categories", {
+        method: "POST",
 
-          headers: {
-            "Content-Type": "application/json",
-          },
-
-          body: JSON.stringify({
-            name: data.name,
-          }),
+        headers: {
+          "Content-Type": "application/json",
         },
-      );
+
+        body: JSON.stringify({
+          name: data.name,
+        }),
+      });
 
       const result = await res.json();
 

@@ -27,16 +27,13 @@ export default function CreatePembicara() {
     try {
       setLoading(true);
 
-      const res = await fetch(
-        "https://on-your-mark-millennium-web.vercel.app/pembicara",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
+      const res = await fetch("http://localhost:3000/pembicara", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-      );
+        body: JSON.stringify(data),
+      });
 
       const result = await res.json();
 

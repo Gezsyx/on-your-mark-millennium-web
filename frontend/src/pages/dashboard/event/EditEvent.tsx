@@ -62,9 +62,9 @@ export default function EditEvent() {
         setLoading(true);
 
         const [resCat, resSpeaker, resEvent] = await Promise.all([
-          fetch("https://on-your-mark-millennium-web.vercel.app/categories"),
-          fetch("https://on-your-mark-millennium-web.vercel.app/pembicara"),
-          fetch(`https://on-your-mark-millennium-web.vercel.app/events/${id}`),
+          fetch("http://localhost:3000/categories"),
+          fetch("http://localhost:3000/pembicara"),
+          fetch(`http://localhost:3000/events/${id}`),
         ]);
 
         const catData = await resCat.json();
@@ -185,21 +185,18 @@ export default function EditEvent() {
     try {
       setIsSubmitting(true);
 
-      const res = await fetch(
-        `https://on-your-mark-millennium-web.vercel.app/events/${id}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            ...formData,
-            categoryId: Number(formData.categoryId),
-            pembicaraId: Number(formData.pembicaraId),
-            dateEvent: new Date(formData.dateEvent).toISOString(),
-          }),
+      const res = await fetch(`http://localhost:3000/events/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
         },
-      );
+        body: JSON.stringify({
+          ...formData,
+          categoryId: Number(formData.categoryId),
+          pembicaraId: Number(formData.pembicaraId),
+          dateEvent: new Date(formData.dateEvent).toISOString(),
+        }),
+      });
 
       const result = await res.json();
 

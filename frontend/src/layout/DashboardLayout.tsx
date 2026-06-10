@@ -19,6 +19,7 @@ export default function DashboardLayout() {
   const menus = [
     { name: "Dashboard", path: "/dashboard" },
     { name: "Biodata", path: "/mybiograph" },
+    { name: "User", path: "/user"},
     { name: "Category", path: "/category" },
     { name: "Pembicara", path: "/pembicara" },
     { name: "Event", path: "/event" },

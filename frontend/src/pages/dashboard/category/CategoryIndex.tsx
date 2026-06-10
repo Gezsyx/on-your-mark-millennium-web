@@ -21,7 +21,7 @@ export default function CategoryIndex() {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 8;
 
-  const API_URL = "https://on-your-mark-millennium-web.vercel.app/categories";
+  const API_URL = "http://localhost:3000/categories";
 
   const fetchCategories = async () => {
     try {

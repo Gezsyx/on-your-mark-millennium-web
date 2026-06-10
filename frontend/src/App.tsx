@@ -22,6 +22,9 @@ import EditEvent from "./pages/dashboard/event/EditEvent";
 import EditCategory from "./pages/dashboard/category/EditCategory";
 import EditPembicara from "./pages/dashboard/pembicara/EditPembicara";
 import MyBiograph from "./pages/dashboard/MyBiograph";
+import UserIndex from "./pages/dashboard/user/UserIndex";
+import EditUser from "./pages/dashboard/user/EditUser";
+import CreateUser from "./pages/dashboard/user/CreateUser";
 
 function App() {
   return (
@@ -44,6 +47,9 @@ function App() {
           <Route element={<DashboardLayout />}>
             <Route path="/dashboard" element={<DashboardIndex />} />
             <Route path="/mybiograph" element={<MyBiograph />} />
+            <Route path="/user" element={<UserIndex/>}/>
+            <Route path="/user/create-user" element={<CreateUser/>}/>
+            <Route path="/user/edit-user/:id" element={<EditUser/>}/>
             <Route path="/category" element={<CategoryIndex />} />
             <Route
               path="/category/create-category"

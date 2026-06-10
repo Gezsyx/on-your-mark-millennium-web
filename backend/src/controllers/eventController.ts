@@ -3,14 +3,8 @@ import { prisma } from "../lib/db.js";
 
 export const createEvent = async (req: Request, res: Response) => {
   try {
-    const {
-      name,
-      categoryId,
-      pembicaraId,
-      location,
-      dateEvent,
-      description,
-    } = req.body;
+    const { name, categoryId, pembicaraId, location, dateEvent, description } =
+      req.body;
 
     if (
       !name ||
@@ -25,7 +19,6 @@ export const createEvent = async (req: Request, res: Response) => {
       });
     }
 
-   
     const category = await prisma.category.findUnique({
       where: {
         id: Number(categoryId),
@@ -37,7 +30,6 @@ export const createEvent = async (req: Request, res: Response) => {
         message: "Category tidak ditemukan",
       });
     }
-
 
     const pembicara = await prisma.pembicara.findUnique({
       where: {
@@ -102,10 +94,7 @@ export const getEvents = async (req: Request, res: Response) => {
   }
 };
 
-export const getEventById = async (
-  req: Request,
-  res: Response
-) => {
+export const getEventById = async (req: Request, res: Response) => {
   try {
     const id = Number(req.params.id);
 
@@ -141,10 +130,7 @@ export const getEventById = async (
   }
 };
 
-export const updateEvent = async (
-  req: Request,
-  res: Response
-) => {
+export const updateEvent = async (req: Request, res: Response) => {
   try {
     const id = Number(req.params.id);
 
@@ -164,14 +150,8 @@ export const updateEvent = async (
       });
     }
 
-    const {
-      name,
-      categoryId,
-      pembicaraId,
-      location,
-      dateEvent,
-      description,
-    } = req.body;
+    const { name, categoryId, pembicaraId, location, dateEvent, description } =
+      req.body;
 
     /**
      * CHECK CATEGORY
@@ -211,18 +191,13 @@ export const updateEvent = async (
       where: { id },
       data: {
         name: name ?? existingEvent.name,
-        categoryId: categoryId
-          ? Number(categoryId)
-          : existingEvent.categoryId,
+        categoryId: categoryId ? Number(categoryId) : existingEvent.categoryId,
         pembicaraId: pembicaraId
           ? Number(pembicaraId)
           : existingEvent.pembicaraId,
         location: location ?? existingEvent.location,
-        dateEvent: dateEvent
-          ? new Date(dateEvent)
-          : existingEvent.dateEvent,
-        description:
-          description ?? existingEvent.description,
+        dateEvent: dateEvent ? new Date(dateEvent) : existingEvent.dateEvent,
+        description: description ?? existingEvent.description,
       },
       include: {
         category: true,
@@ -242,10 +217,7 @@ export const updateEvent = async (
   }
 };
 
-export const deleteEvent = async (
-  req: Request,
-  res: Response
-) => {
+export const deleteEvent = async (req: Request, res: Response) => {
   try {
     const id = Number(req.params.id);
 
